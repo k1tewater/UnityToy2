@@ -33,5 +33,21 @@ public class Game_Manager : MonoBehaviour
         {
             keys[3].GetComponent<Animation>().Play("KeyPressed");
         }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            keys[0].GetComponent<Animation>().Play("KeyUnpressed");
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            keys[1].GetComponent<Animation>().Play("KeyUnpressed");
+        }
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            keys[2].GetComponent<Animation>().Play("KeyUnpressed");
+        }
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            keys[3].GetComponent<Animation>().Play("KeyUnpressed");
+        }
     }
 }
