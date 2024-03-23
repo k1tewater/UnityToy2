@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Define
 {
-    enum Tracks
+    public enum Tracks
     {
         Nightmare,
 

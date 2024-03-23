@@ -7,19 +7,17 @@ using UnityEngine.UIElements;
 public class PatternTest : MonoBehaviour
 {
     const float D = -1.5f, F = -0.5f, J = 0.5f, K = 1.5f;
-    float[][] patternCode;
+
     GameObject note;
     void Start()
     {
         note = Resources.Load<GameObject>("Prefabs/Note");
+        var patternCode = new Pattern(Define.Tracks.Nightmare).code;
 
-        SetNote(D, 1);
-        SetNote(D, 2);
-        SetNote(D, 3);
-        SetNote(D, 4);
-        SetNote(D, 5);
-        SetNote(D, 6);
-        SetNote(D, 7);
+        foreach(float[] value in patternCode)
+        {
+            SetNote(value[0], value[1]);
+        }
     }
 
     void SetNote(float keyValue, float yPos)
