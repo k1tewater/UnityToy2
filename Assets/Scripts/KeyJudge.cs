@@ -8,11 +8,14 @@ public class KeyJudge : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (name.Substring(4).Equals("FailCollider"))
+        {
+
+        }
         if (other.tag == "Note")
         {
             isJudge = true;
         }
-
     }
 
     void OnTriggerExit2D(Collider2D other)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
@@ -8,7 +9,8 @@ public class Game_Manager : MonoBehaviour
     GameObject[] keys = new GameObject[4];
     Animation[] anim_keys = new Animation[4];
     GameObject pattern;
-    Collider2D key1Judge;
+
+    TextMeshPro combo;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class Game_Manager : MonoBehaviour
         anim_keys[1] = keys[1].GetComponent<Animation>();
         anim_keys[2] = keys[2].GetComponent<Animation>();
         anim_keys[3] = keys[3].GetComponent<Animation>();
+
+        combo = GameObject.Find("Combo").GetComponent<TextMeshPro>();
 
         PatternInstantiate();
     }
@@ -81,7 +85,9 @@ public class Game_Manager : MonoBehaviour
 
     private void NoteUpdate()
     {
-        pattern.transform.position = Vector3.MoveTowards(pattern.transform.position, new Vector3(0, -10, 0), 0.03f);
+        Vector3 downVector = pattern.transform.position;
+        downVector.y -= 1;
+        pattern.transform.position = Vector3.MoveTowards(pattern.transform.position, downVector, 0.01f);
     }
 
     private void KeyJudging(String key)

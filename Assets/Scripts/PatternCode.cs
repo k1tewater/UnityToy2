@@ -11,7 +11,7 @@ public class Pattern
     public Pattern(Define.Tracks track)
     {
         code = new LinkedList<float[]>();
-        
+
         string[] codeArr = GetCodeString(track).Split(' ');
         foreach (string value in codeArr)
         {
@@ -25,11 +25,11 @@ public class Pattern
     private string GetCodeString(Define.Tracks track)
     {
         String codeString = "";
-        switch(track)
+        switch (track)
         {
             case Define.Tracks.Nightmare:
                 codeString =
-                "D1 D2 D3 D4 D5 D6 D7 D8 D9 F1 F2 F3 F4 J1.5 K2.5";
+                "D1 F2 J3 K4 D5 F6 J7 K8 D9 F10 J11 K12 D13 F14";
                 break;
         }
         return codeString;
@@ -38,17 +38,17 @@ public class Pattern
     private float GetKey(char c)
     {
         switch (c)
-            {
-                case 'D':
-                    return -1.5f;
-                case 'F':
-                    return -0.5f;
-                case 'J':
-                    return 0.5f;
-                case 'K':
-                   return 1.5f;
-                default:
-                    return 0f;       
-            }
+        {
+            case 'D':
+                return -1.5f;
+            case 'F':
+                return -0.5f;
+            case 'J':
+                return 0.5f;
+            case 'K':
+                return 1.5f;
+            default:
+                return 0f;
+        }
     }
 }
