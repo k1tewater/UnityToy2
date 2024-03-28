@@ -10,7 +10,7 @@ public class Game_Manager : MonoBehaviour
     Animation[] anim_keys = new Animation[4];
     GameObject pattern;
 
-    TextMeshPro combo;
+    TMP_Text combo;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class Game_Manager : MonoBehaviour
         anim_keys[2] = keys[2].GetComponent<Animation>();
         anim_keys[3] = keys[3].GetComponent<Animation>();
 
-        combo = GameObject.Find("Combo").GetComponent<TextMeshPro>();
+        combo = GameObject.Find("Combo").GetComponent<TMP_Text>();
 
         PatternInstantiate();
     }
@@ -87,27 +87,46 @@ public class Game_Manager : MonoBehaviour
     {
         Vector3 downVector = pattern.transform.position;
         downVector.y -= 1;
-        pattern.transform.position = Vector3.MoveTowards(pattern.transform.position, downVector, 0.01f);
+        pattern.transform.position = Vector3.MoveTowards(pattern.transform.position, downVector, 0.05f);
     }
 
     private void KeyJudging(String key)
     {
-        bool isPerfect = GameObject.Find(key + "PerfectCollider").GetComponent<KeyJudge>().isJudge;
-        bool isGood = GameObject.Find(key + "GoodCollider").GetComponent<KeyJudge>().isJudge;
-        bool isBad = GameObject.Find(key + "BadCollider").GetComponent<KeyJudge>().isJudge;
+        KeyJudge[] collider = {GameObject.Find(key + "PerfectCollider").GetComponent<KeyJudge>(),
+        GameObject.Find(key + "GoodCollider").GetComponent<KeyJudge>(),
+        GameObject.Find(key + "BadCollider").GetComponent<KeyJudge>() };
+        
+        bool isPerfect = collider[0].isJudge;
+        bool isGood = collider[1].isJudge;
+        bool isBad = collider[2].isJudge;
         String judgeString = "";
         if (isBad)
         {
             judgeString = "Bad";
+            Destroy(collider[2].note);
         }
         if (isGood)
         {
             judgeString = "Good";
+            Destroy(collider[1].note);
         }
         if (isPerfect)
         {
             judgeString = "Perfect";
+            Destroy(collider[0].note);
         }
+        if (isBad || isGood || isPerfect) 
+        { 
+            ComboAdd();
+        }
+        
         Debug.Log(judgeString);
     }
+
+    private void ComboAdd()
+    {
+        int comboCount = int.Parse(combo.text.Split(' ')[0]) + 1;
+        combo.text = comboCount + " Combo";
+    }
+
 }

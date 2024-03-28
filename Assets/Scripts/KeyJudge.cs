@@ -5,6 +5,7 @@ using UnityEngine;
 public class KeyJudge : MonoBehaviour
 {
     public bool isJudge = false;
+    public GameObject note;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,6 +16,7 @@ public class KeyJudge : MonoBehaviour
         if (other.tag == "Note")
         {
             isJudge = true;
+            note = other.gameObject;
         }
     }
 
