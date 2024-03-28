@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &30111075
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &251231497
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -530,6 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!1 &331951308
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &331951311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -857,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!1 &850266971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,6 +1275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &1422092751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1741,6 +1747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &1679934260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1832,6 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &1704920672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2007,6 +2015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &1805190694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2143,6 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!1 &1903351439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,6 +2267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &2009650540
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2348,6 +2359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isJudge: 0
+  note: {fileID: 0}
 --- !u!61 &2014320406
 BoxCollider2D:
   m_ObjectHideFlags: 0
