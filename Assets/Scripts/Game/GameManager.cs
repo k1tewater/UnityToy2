@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Game_Manager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     GameObject[] keys = new GameObject[4];
     Animation[] anim_keys = new Animation[4];
