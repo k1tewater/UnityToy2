@@ -1,0 +1,30 @@
+노트떨어짐 > 판정 > 점수,콤보 계산
+Pattern Object
+ - Falling
+ - Set notes
+
+Judge Object
+ - Detect Note
+ - Judge
+ - Score, Combo calc
+
+Key Object
+ - animate
+
+Score Object
+ - Add score
+
+Combo Object
+ - Add Combo
+ - Reset Combo
+
+@KeyManager
+ - Input Detect
+ 
+@ObjectManager
+ - GetOrAddObject
+
+ 
+
+
+

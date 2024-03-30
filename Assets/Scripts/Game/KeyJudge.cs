@@ -4,27 +4,75 @@ using UnityEngine;
 
 public class KeyJudge : MonoBehaviour
 {
-    public bool isJudge = false;
-    public GameObject note;
+    KeyCode key;
+    char judgeString; // P(Perfect), G(Good), B(Bad), F(Fail)
+    bool isJudge;
+    GameObject judgeNote;
+    ObjectManager manager;
 
-    void OnTriggerEnter2D(Collider2D other)
+    void Start()
     {
-        if (name.Substring(4).Equals("FailCollider"))
-        {
+        key = GetThisKey();
+        judgeString = gameObject.name[4];
+        manager = Managers.Object;
+    }
 
-        }
-        if (other.tag == "Note")
+    void Update()
+    {
+        if (!isJudge) return;
+
+         if (Input.GetKeyDown(key))
         {
-            isJudge = true;
-            note = other.gameObject;
+            Destroy(judgeNote);
+            switch(judgeString)   
+            {
+                case 'P':
+                    manager.combo.Add();
+                    break;
+                case 'G':
+                    manager.combo.Add();
+                    break;
+                case 'B':
+                    manager.combo.Add();
+                    break;
+                case 'F':
+                    manager.combo.Add();
+                    break;
+                }
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Note")
+        if (other.tag != "Note")
+            return;
+
+        isJudge = true;
+        judgeNote = other.gameObject;
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.tag != "Note")
+            return;
+
+        isJudge = false;
+        judgeNote = null;
+    }
+
+    KeyCode GetThisKey()
+    {
+        switch (name[3])
         {
-            isJudge = false;
+            case '1':
+                return KeyCode.D;
+            case '2':
+                return KeyCode.F;
+            case '3':
+                return KeyCode.J;
+            case '4':
+                return KeyCode.K;
+            default:
+                return KeyCode.None;
         }
     }
 }

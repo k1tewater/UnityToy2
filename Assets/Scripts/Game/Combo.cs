@@ -12,16 +12,17 @@ public class Combo : MonoBehaviour
     void Start()
     {
         self = GetComponent<TextMeshPro>();
+        combo = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        self.text = combo + " Combo";
-    }
-
-    public void AddCombo()
+    public void Add()
     {
         combo++;
+        self.text = combo + " Combo";
+    }
+    public void Break()
+    {
+        combo = 0;
+        self.text = combo + " Combo";
     }
 }

@@ -17,7 +17,6 @@ public class Pattern
         {
             float key = GetKey(value[0]);
             float yPos = float.Parse(value.Substring(1));
-            Debug.Log(key + " " + yPos);
             code.AddLast(new float[] { key, yPos });
         }
     }
