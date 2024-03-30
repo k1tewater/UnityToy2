@@ -1,44 +1,36 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager
+public class InputManager : MonoBehaviour
 {
-    ObjectManager objManager = Managers.Object;
-    public void Update()
+    private Dictionary<KeyCode, string> keyAnimationMap = new Dictionary<KeyCode, string>
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        {KeyCode.D, ""}, {KeyCode.F, ""}, {KeyCode.J, ""}, {KeyCode.K, ""}
+    };
+    void Update()
+    {
+        foreach (var kvp in keyAnimationMap)
         {
-            objManager.keys[0].GetComponent<Animation>().Play("KeyPressed");
+            if(Input.GetKeyDown(kvp.Key))
+            {
+                PlayAnimation(kvp.Key, "KeyPressed");
+            }
+            if(Input.GetKeyUp(kvp.Key))
+            {
+                PlayAnimation(kvp.Key, "KeyUnpressed");
+            }
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            objManager.keys[1].GetComponent<Animation>().Play("KeyPressed");
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            objManager.keys[2].GetComponent<Animation>().Play("KeyPressed");
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            objManager.keys[3].GetComponent<Animation>().Play("KeyPressed");
-        }
+    }
 
-        if (Input.GetKeyUp(KeyCode.D))
+    private void PlayAnimation(KeyCode key, string animationName)
+    {
+        foreach(var keyObj in ObjManager.GetInstance.keys)
         {
-            objManager.keys[0].GetComponent<Animation>().Play("KeyUnpressed");
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            objManager.keys[1].GetComponent<Animation>().Play("KeyUnpressed");
-        }
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-            objManager.keys[2].GetComponent<Animation>().Play("KeyUnpressed");
-        }
-        if (Input.GetKeyUp(KeyCode.K))
-        {
-            objManager.keys[3].GetComponent<Animation>().Play("KeyUnpressed");
+            if(keyObj != null && keyObj.CompareTag(key.ToString()))
+            {
+                keyObj.GetComponent<Animation>().Play(animationName);
+            }
         }
     }
 }

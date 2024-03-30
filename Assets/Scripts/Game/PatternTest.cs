@@ -22,7 +22,9 @@ public class PatternTest : MonoBehaviour
 
     void SetNote(float keyValue, float yPos)
     {
-        Instantiate(note, transform).transform.localPosition = new Vector3(keyValue, yPos);
+        var noteObj = Instantiate(note, transform);
+        noteObj.transform.localPosition = new Vector3(keyValue, yPos);
+        noteObj.GetComponent<SpriteRenderer>().sortingOrder--;
     }
 
 }

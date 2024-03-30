@@ -8,13 +8,11 @@ public class KeyJudge : MonoBehaviour
     char judgeString; // P(Perfect), G(Good), B(Bad), F(Fail)
     bool isJudge;
     GameObject judgeNote;
-    ObjectManager manager;
 
     void Start()
     {
         key = GetThisKey();
-        judgeString = gameObject.name[4];
-        manager = Managers.Object;
+        judgeString = name[4];
     }
 
     void Update()
@@ -27,18 +25,13 @@ public class KeyJudge : MonoBehaviour
             switch(judgeString)   
             {
                 case 'P':
-                    manager.combo.Add();
-                    break;
                 case 'G':
-                    manager.combo.Add();
-                    break;
                 case 'B':
-                    manager.combo.Add();
+                    ObjManager.GetInstance.comboText.Add();
+                    ObjManager.GetInstance.judgeText.Set(judgeString);
+                    ObjManager.GetInstance.scoreText.Add(judgeString);
                     break;
-                case 'F':
-                    manager.combo.Add();
-                    break;
-                }
+            }
         }
     }
 
@@ -46,6 +39,13 @@ public class KeyJudge : MonoBehaviour
     {
         if (other.tag != "Note")
             return;
+        if (judgeString=='F')
+        {
+            Destroy(judgeNote);
+            ObjManager.GetInstance.comboText.Break();
+            ObjManager.GetInstance.judgeText.Set(judgeString);
+            return;
+        }
 
         isJudge = true;
         judgeNote = other.gameObject;
