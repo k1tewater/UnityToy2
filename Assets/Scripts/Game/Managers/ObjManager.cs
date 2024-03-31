@@ -13,6 +13,7 @@ public class ObjManager : MonoBehaviour
     public static ObjManager GetInstance {get { Init(); return instance;}}
 
     public GameObject[] keys;
+    public GameObject pattern;
     public ComboText comboText;
     public ScoreText scoreText;
     public JudgeText judgeText;
@@ -28,6 +29,7 @@ public class ObjManager : MonoBehaviour
         comboText = GameObject.Find("Combo").GetComponent<ComboText>();
         scoreText = GameObject.Find("Score").GetComponent<ScoreText>();
         judgeText = GameObject.Find("Judge").GetComponent<JudgeText>();
+        pattern = Instantiate(Resources.Load<GameObject>("Prefabs/Pattern"));
     }
     static void Init()
     {

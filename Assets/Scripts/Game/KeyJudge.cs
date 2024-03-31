@@ -41,7 +41,7 @@ public class KeyJudge : MonoBehaviour
             return;
         if (judgeString=='F')
         {
-            Destroy(judgeNote);
+            Destroy(other.gameObject);
             ObjManager.GetInstance.comboText.Break();
             ObjManager.GetInstance.judgeText.Set(judgeString);
             return;
