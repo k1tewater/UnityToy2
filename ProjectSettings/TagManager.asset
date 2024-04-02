@@ -9,11 +9,12 @@ TagManager:
   - F
   - J
   - K
+  - ClosestNote
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Note
   - Water
   - UI
   - 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class KeyJudge : MonoBehaviour
@@ -7,7 +8,7 @@ public class KeyJudge : MonoBehaviour
     KeyCode key;
     char judgeString; // P(Perfect), G(Good), B(Bad), F(Fail)
     bool isJudge;
-    GameObject judgeNote;
+    GameObject judgeNote = null;
 
     void Start()
     {
@@ -17,12 +18,16 @@ public class KeyJudge : MonoBehaviour
 
     void Update()
     {
-        if (!isJudge) return;
-
-         if (Input.GetKeyDown(key))
+        if (judgeString == 'F')
+        {
+            RaycastHit2D note = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << LayerMask.NameToLayer("Note"));
+            note.transform.gameObject.tag = "ClosestNote";
+            judgeNote = note.transform.gameObject;
+        }
+        if (Input.GetKeyDown(key) && judgeNote.tag == "ClosestNote" && isJudge)
         {
             Destroy(judgeNote);
-            switch(judgeString)   
+            switch (judgeString)
             {
                 case 'P':
                 case 'G':
@@ -37,22 +42,23 @@ public class KeyJudge : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != "Note")
-            return;
-        if (judgeString=='F')
+        if (judgeString == 'F')
         {
             Destroy(other.gameObject);
             ObjManager.GetInstance.comboText.Break();
             ObjManager.GetInstance.judgeText.Set(judgeString);
             return;
         }
-
-        isJudge = true;
-        judgeNote = other.gameObject;
+        if (other.gameObject.tag == "ClosestNote")
+        {
+            isJudge = true;
+            judgeNote = other.gameObject;
+        }
     }
 
-    void OnTriggerExit2D(Collider2D other) {
-        if (other.tag != "Note")
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Note"))
             return;
 
         isJudge = false;
