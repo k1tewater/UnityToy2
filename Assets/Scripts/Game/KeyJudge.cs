@@ -9,6 +9,7 @@ public class KeyJudge : MonoBehaviour
     char judgeString; // P(Perfect), G(Good), B(Bad), F(Fail)
     bool isJudge;
     GameObject judgeNote = null;
+    RaycastHit2D note;
 
     void Start()
     {
@@ -20,11 +21,15 @@ public class KeyJudge : MonoBehaviour
     {
         if (judgeString == 'F')
         {
-            RaycastHit2D note = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << LayerMask.NameToLayer("Note"));
-            note.transform.gameObject.tag = "ClosestNote";
-            judgeNote = note.transform.gameObject;
+            note = Physics2D.Raycast(transform.position, Vector2.up, Mathf.Infinity, 1 << LayerMask.NameToLayer("Note"));
+            if (note.transform != null)
+            {
+                note.transform.gameObject.tag = "ClosestNote";
+                judgeNote = note.transform.gameObject;
+            }
+
         }
-        if (Input.GetKeyDown(key) && judgeNote.tag == "ClosestNote" && isJudge)
+        if (Input.GetKeyDown(key) && judgeNote != null && judgeNote.tag == "ClosestNote" && isJudge)
         {
             Destroy(judgeNote);
             switch (judgeString)

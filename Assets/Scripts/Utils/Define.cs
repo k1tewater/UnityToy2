@@ -7,6 +7,7 @@ public class Define
     public enum Tracks
     {
         Nightmare,
-        
+        BlackOrWhite,
+        HeartOfWitch
     }
 }
