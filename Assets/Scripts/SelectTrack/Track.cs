@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,33 +7,40 @@ using UnityEngine.UI;
 
 public class Track : MonoBehaviour
 {
-    public int trackNum;
-    Image img;
-    TMP_Text title;
-    TMP_Text diff;
-    // Start is called before the first frame update
+    readonly int IS_SELECTED = Animator.StringToHash("isSelected"),
+    IS_CENTER = Animator.StringToHash("isCenter"),
+    IS_ELSE_SELECTED = Animator.StringToHash("isElseSelected");
+    Animator animator;
+    int trackNum;
+    Define.Tracks track;
+    public bool isSelected = false;
     void Start()
     {
-        img = GetComponentsInChildren<Image>()[2];
-        var texts = GetComponentsInChildren<TMP_Text>();
-        title = texts[0];
-        diff = texts[1];
-    }
-    
-    public void SetTitle(string title, string producer, int bpm)
-    {
-        string text = $"{title}\n<size=15>Prod. {producer}\nBPM - {bpm}";
-        this.title.text = text;
+        animator = GetComponent<Animator>();
+
+        int numStartidx = name.IndexOf("Track") + 5;
+        trackNum = int.Parse(name[numStartidx..]);
+        track = (Define.Tracks)(trackNum - 1);
     }
 
-    public void SetDiff(int easy, int normal=-1, int hard=-1)
+    void Update()
     {
-        string text = $"  <color=\"blue\">Easy - {easy}\n  ";
-        if (normal!=-1)
-            text += $"<color=\"yellow\">Normal - {normal}\n  ";
-        if (hard!=-1)
-            text += $"<color=\"red\">Hard - {hard}</color>";
-
-        diff.text = text;
+        if (SelectManager.centerTrack == track)
+        {
+            animator.SetBool(IS_CENTER, true);
+            if (isSelected)
+            {
+                animator.SetBool(IS_SELECTED, true);
+            }
+            else
+            {
+                animator.SetBool(IS_SELECTED, false);
+            }
+        }
+        else
+        {
+            animator.SetBool(IS_CENTER, false);
+        }
     }
+
 }
