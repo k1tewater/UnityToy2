@@ -14,22 +14,22 @@ public class InputManager : MonoBehaviour
         {
             if(Input.GetKeyDown(kvp.Key))
             {
-                PlayAnimation(kvp.Key, "KeyPressed");
+                PlayAnimation(kvp.Key, true);
             }
             if(Input.GetKeyUp(kvp.Key))
             {
-                PlayAnimation(kvp.Key, "KeyUnpressed");
+                PlayAnimation(kvp.Key, false);
             }
         }
     }
 
-    private void PlayAnimation(KeyCode key, string animationName)
+    private void PlayAnimation(KeyCode key, bool isPressed)
     {
         foreach(var keyObj in ObjManager.GetInstance.keys)
         {
             if(keyObj != null && keyObj.CompareTag(key.ToString()))
             {
-                keyObj.GetComponent<Animation>().Play(animationName);
+                keyObj.GetComponent<Animator>().SetBool("isPressed", isPressed);
             }
         }
     }
