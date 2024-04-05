@@ -1,11 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor.SceneTemplate;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class ObjManager : MonoBehaviour
 {
@@ -18,7 +11,7 @@ public class ObjManager : MonoBehaviour
     public ComboText comboText;
     public ScoreText scoreText;
     public JudgeText judgeText;
-
+    public Define.Tracks track;
     void Start()
     {
         Init();
@@ -37,6 +30,8 @@ public class ObjManager : MonoBehaviour
             GameObject.Find("Key3Effect").GetComponent<SpriteRenderer>(),
             GameObject.Find("Key4Effect").GetComponent<SpriteRenderer>()
         };
+        track = (Define.Tracks)PlayerPrefs.GetInt("track");
+        Debug.Log(track);
     }
     static void Init()
     {

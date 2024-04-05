@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class SelectManager : MonoBehaviour
 {
     static public Define.Tracks centerTrack;
     RectTransform[] trackRect;
-
     GameObject tracks;
     Vector3 vel = Vector3.zero;
     Vector3 target;
@@ -39,10 +39,19 @@ public class SelectManager : MonoBehaviour
             target += Vector3.right * -300f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && !GetSelected())
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            SetSelected(true);
-            AudioController._audio.Play();
+            if (!GetSelected())
+            {
+                SetSelected(true);
+                AudioController._audio.Play();
+            }
+            else
+            {
+                PlayerPrefs.SetInt("track", (int)centerTrack);
+                SceneManager.LoadScene("Game");
+            }
+
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && GetSelected())

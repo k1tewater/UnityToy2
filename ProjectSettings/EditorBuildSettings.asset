@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainTitle.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SelectTrack.unity
+    guid: 56132356c95d8f548a86a2d9e8eadf73
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 5f5f19d93b1eb5a4498bba174cd57e86
+  - enabled: 1
+    path: Assets/Scenes/Setting.unity
+    guid: 3b8a29ce9cd58e34585fdc466c3d1bf4
   m_configObjects: {}

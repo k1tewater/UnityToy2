@@ -1919,6 +1919,7 @@ MonoBehaviour:
   comboText: {fileID: 0}
   scoreText: {fileID: 0}
   judgeText: {fileID: 0}
+  track: 0
 --- !u!4 &742887069
 Transform:
   m_ObjectHideFlags: 0
@@ -2034,6 +2035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 790083211}
   - component: {fileID: 790083210}
+  - component: {fileID: 790083212}
   m_Layer: 0
   m_Name: AudioController
   m_TagString: Untagged
@@ -2152,6 +2154,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &790083212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790083209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46c6360b55299b45a966fdd174654b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &810862184
 GameObject:
   m_ObjectHideFlags: 0
